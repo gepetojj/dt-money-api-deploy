@@ -5,13 +5,18 @@ import { PrismaTransactionRepository } from './modules/transactions/infra/reposi
 import { ITransactionRepository } from './modules/transactions/infra/repositories/transaction.repository.abstract';
 import { PrismaService } from './shared/prisma.service';
 import { TransactionsModule } from './modules/transactions/transactions.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
-  imports: [TransactionsModule],
+  imports: [TransactionsModule, UsersModule],
   controllers: [AppController],
-  providers: [AppService, PrismaService, {
-    provide: ITransactionRepository,
-    useClass: PrismaTransactionRepository
-  }],
+  providers: [
+    AppService,
+    PrismaService,
+    {
+      provide: ITransactionRepository,
+      useClass: PrismaTransactionRepository,
+    },
+  ],
 })
 export class AppModule {}

@@ -3,9 +3,7 @@ import { ITransactionRepository } from './modules/transactions/infra/repositorie
 
 @Injectable()
 export class AppService {
-  
   getHello(): string {
     return 'Hello World!';
   }
-
 }
